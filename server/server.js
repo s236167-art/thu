@@ -1,7 +1,10 @@
 require("dotenv").config();
 
-const express = require("express");
-const mongoose = require("mongoose");
+const crypto = require('crypto');
+global.crypto = crypto.webcrypto;
+
+const express = require('express');
+const mongoose = require('mongoose');
 
 const cors = require("cors");
 const Student = require("./models/Student");
@@ -127,8 +130,10 @@ app.delete("/api/students/:id", async (req, res) => {
 // Chạy server
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, "0.0.0.0", () => {
+app.get('/api/hello', (req, res) => {
+    res.json({ message: 'Hello from Backend!' });
+});
 
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-
 });
