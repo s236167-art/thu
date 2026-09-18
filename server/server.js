@@ -1,4 +1,6 @@
 require("dotenv").config();
+const dns = require("dns");
+dns.setServers(["168.63.129.16"]);
 
 const crypto = require('crypto');
 global.crypto = crypto.webcrypto;
